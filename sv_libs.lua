@@ -61,7 +61,7 @@ if usingVorp then
         return Citizen.Await(promise)
     end
     MBLFunctions["notify"] = function(source, message, duration)
-        return VorpCore.NotifyCenter(source, message, duration)
+        return TriggerClientEvent("notify:show", source, { text = message, duration = duration })
     end
     MBLFunctions["getPlayer"] = function(source)
         local user = VorpCore.getUser(source) --[[@as User]]  
@@ -255,7 +255,7 @@ if usingRSG then
         return item
     end
     MBLFunctions["notify"] = function(source, message, duration)
-        return TriggerClientEvent('ox_lib:notify', source, {title = "Notification", description = message, type = 'inform' })
+        return TriggerClientEvent("notify:show", source, { text = message, duration = duration })
     end
     MBLFunctions["getPlayer"] = function(source)
         local player = RSGCore.Functions.GetPlayer(source)
@@ -275,7 +275,7 @@ if usingRSG then
     end
     MBLFunctions["getJobGrade"] = function(source)
         local player = RSGCore.Functions.GetPlayer(source)
-        return player.PlayerData.job.grade.level
+        return player.PlayerData.job.grade
     end
     MBLFunctions["getGold"] = function(source)
         local player = RSGCore.Functions.GetPlayer(source)
@@ -443,7 +443,7 @@ if usingTPZCore then
     end
 
     MBLFunctions["notify"] = function(source, message, duration)
-        return TPZ.NotifyCenter(source, message, duration)
+        return TriggerClientEvent("notify:show", source, { text = message, duration = duration })
     end
     
     MBLFunctions["getPlayer"] = function(source)

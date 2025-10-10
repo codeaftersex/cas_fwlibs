@@ -7,7 +7,7 @@ CreateThread(function()
     if vorpDedected then
         VorpCore = exports.vorp_core:GetCore()
         MBLFunctions["notify"] = function(text, duration)
-            return VorpCore.NotifyTip(text, duration)
+            return exports['cas-simplenotify']:showNotification(text, duration)
         end
         CASFWlibsClientLoaded = true
     end
@@ -16,7 +16,7 @@ CreateThread(function()
         print("RSG: " .. tostring(rsgDedected))
         RSGCore = exports['rsg-core']:GetCoreObject()
         MBLFunctions["notify"] = function(text,duration)
-            return lib.notify({ title = "Notification", description = text, type = 'inform' })
+            return exports['cas-simplenotify']:showNotification(text, duration)
         end
         CASFWlibsClientLoaded = true
     end
@@ -29,7 +29,7 @@ CreateThread(function()
         TPZ = exports.tpz_core:getCoreAPI()
 
         MBLFunctions["notify"] = function(text, duration)
-            return TPZ.NotifyTip(text, duration)
+            return exports['cas-simplenotify']:showNotification(text, duration)
         end
 
         CASFWlibsClientLoaded = true
